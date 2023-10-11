@@ -1,140 +1,131 @@
-<mxfile host="app.diagrams.net" modified="2023-10-08T12:47:26.431Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.47" etag="BcgW7yGD6svsLd4ujXl_" version="22.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-11T02:00:34.053Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.60" etag="79h7bHxfAv5t5iXobx4A" version="22.0.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1042" dy="665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-0" target="K39n9AuO4P9iXG7C3Mja-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-0" target="K39n9AuO4P9iXG7C3Mja-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-0" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Patient&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="40" y="620" width="240" height="50" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-0" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Patient&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="40" y="880" width="240" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-1" value="Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Calculate priority in liver transplant list (1- 10), based on patient data. This is to be done using &lt;b&gt;multithreading&lt;/b&gt;.&lt;/li&gt;&lt;/ul&gt;Class variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Name&lt;/li&gt;&lt;li&gt;Medical data fields&lt;/li&gt;&lt;li&gt;Hospital in which patient is admitted in&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="40" y="670" width="240" height="230" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-1" value="Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Calculate meld score.&lt;/li&gt;&lt;li&gt;Assign patient number to each patient. &lt;b&gt;This is to be done using multithreading.&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;Class variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Name of patient&lt;/li&gt;&lt;li&gt;Hospital in which patient is admitted in.&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="40" y="930" width="240" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-4" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Liver Transplant&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-4" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;Liver Transplant&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="40" y="160" width="240" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-6" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;It will take input for 5 patients&lt;br&gt;&lt;/b&gt;&lt;br&gt;Mandatory Options -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Patient Name&lt;/li&gt;&lt;li&gt;Patient data&lt;/li&gt;&lt;li&gt;Hospital Name&lt;/li&gt;&lt;li&gt;Date of surgery&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="40" y="200" width="240" height="200" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-6" value="&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;It will take input for 5 patients&lt;br&gt;&lt;/b&gt;&lt;br&gt;Mandatory Options -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Patient Name&lt;/li&gt;&lt;li&gt;Patient data&lt;/li&gt;&lt;li&gt;Hospital Name&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="40" y="200" width="240" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-8" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Patient List&amp;nbsp;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="40" y="980" width="240" height="40" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-8" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Patient List&amp;nbsp;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="300" y="600" width="240" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-9" value="Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Create and update list of patients according to their score.&lt;/li&gt;&lt;li&gt;Pop a patient data from list to send to User Interface.&lt;/li&gt;&lt;li&gt;Peek a patient data from list to send to User Interface.&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="40" y="1020" width="240" height="200" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-9" value="Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Create and update &lt;b&gt;linked list &lt;/b&gt;of patients according to their score.&lt;/li&gt;&lt;li&gt;Pop a patient data from list to send to User Interface.&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="300" y="640" width="240" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-10" value="&lt;font style=&quot;font-size: 29px;&quot;&gt;JavaFx&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-10" value="&lt;font style=&quot;font-size: 29px;&quot;&gt;JavaFx&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="310" y="40" width="240" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-10" target="K39n9AuO4P9iXG7C3Mja-4">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-10" target="K39n9AuO4P9iXG7C3Mja-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="390" y="380" as="sourcePoint" />
             <mxPoint x="440" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-13" value="&lt;font style=&quot;font-size: 29px;&quot;&gt;Classes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-13" value="&lt;font style=&quot;font-size: 29px;&quot;&gt;Classes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="40" y="440" width="240" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="K39n9AuO4P9iXG7C3Mja-0">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="CSobCwgFTMA0VVr5u7jC-0" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-50" y="780" as="sourcePoint" />
             <mxPoint y="730" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-15" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-1" target="K39n9AuO4P9iXG7C3Mja-8">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-50" y="840" as="sourcePoint" />
-            <mxPoint y="790" as="targetPoint" />
-          </mxGeometry>
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-18" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Extends&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="40" y="810" width="110" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-18" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Extends&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="40" y="910" width="110" height="60" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-23" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Liver&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="310" y="880" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-20" value="&lt;font style=&quot;font-size: 28px;&quot;&gt;Interface&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="30" y="1260" width="240" height="80" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-24" value="Class variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Liver blood type&lt;/li&gt;&lt;li&gt;Hospital&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="310" y="920" width="200" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-21" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-20" target="K39n9AuO4P9iXG7C3Mja-22">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="380" y="1270" as="sourcePoint" />
-            <mxPoint x="150" y="1420" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-22" value="Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Create priority according to patient data.&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="30" y="1420" width="240" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-23" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Liver&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="340" y="620" width="200" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-24" value="Class variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Stores time of harvesting.&lt;/li&gt;&lt;li&gt;Liver data&lt;/li&gt;&lt;li&gt;Hospital&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="340" y="660" width="200" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="K39n9AuO4P9iXG7C3Mja-23">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="440" y="520" as="sourcePoint" />
-            <mxPoint x="440" y="560" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-27" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Hospital&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="580" y="620" width="220" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-30" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="K39n9AuO4P9iXG7C3Mja-27">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="640" as="sourcePoint" />
-            <mxPoint x="440" y="590" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-31" value="Class variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Name&lt;/li&gt;&lt;li&gt;Coordinates with respect to 0,0&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="580" y="660" width="220" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-31" target="K39n9AuO4P9iXG7C3Mja-33">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="890" as="sourcePoint" />
-            <mxPoint x="700" y="860" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-33" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Hospital List&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="580" y="860" width="220" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-34" value="Class Variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;list of&amp;nbsp;&lt;b&gt;&lt;i&gt;4&lt;/i&gt;&lt;/b&gt; hospitals&lt;/li&gt;&lt;/ul&gt;Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Calculate priority for a hospital to get a liver based on life of liver vs distance between hospitals. &lt;b&gt;This is to be done using multithreading&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="580" y="900" width="220" height="180" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-35" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Extends&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="710" y="790" width="110" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-36" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="K39n9AuO4P9iXG7C3Mja-38">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-36" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="K39n9AuO4P9iXG7C3Mja-38" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="440" y="120" as="sourcePoint" />
             <mxPoint x="580" y="143.33333333333326" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-38" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Liver Harvest&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-38" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Liver Harvest&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="560" y="160" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-39" value="&lt;b&gt;It will take input for 5 livers.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mandatory Options -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Liver data&lt;/li&gt;&lt;li&gt;Time of harvest&lt;/li&gt;&lt;li&gt;Place of harvest (Hospital Name)&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-39" value="&lt;b&gt;It will take input for 5 livers.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mandatory Options -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Liver data&lt;/li&gt;&lt;li&gt;Place of harvest (Hospital Name)&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="560" y="200" width="200" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-40" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1.012;exitY=0.409;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-6" target="K39n9AuO4P9iXG7C3Mja-39">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-40" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="K39n9AuO4P9iXG7C3Mja-39" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="360" as="sourcePoint" />
+            <mxPoint x="280" y="280" as="sourcePoint" />
             <mxPoint x="440" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-42" value="both are part of the same program" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-42" value="both are part of the same program" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="320" y="210" width="200" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-43" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="K39n9AuO4P9iXG7C3Mja-45">
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-43" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="K39n9AuO4P9iXG7C3Mja-44" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="390" y="670" as="sourcePoint" />
             <mxPoint x="480" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-44" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Driver&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="560" y="440" width="160" height="40" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-44" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Driver&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="590" y="600" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="K39n9AuO4P9iXG7C3Mja-45" value="Combines uses of all classes to create final output which will be displayed by JavaFX program" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="560" y="480" width="160" height="80" as="geometry" />
+        <mxCell id="K39n9AuO4P9iXG7C3Mja-45" value="Combines uses of all classes to create final output which will be displayed by JavaFX program" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="590" y="640" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-0" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;Medical data&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="50" y="600" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-1" value="Class variables -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Liver blood type&lt;/li&gt;&lt;/ul&gt;Methods -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Static method to check compatibility of donor liver and required patient liver.&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="50" y="640" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CSobCwgFTMA0VVr5u7jC-1" target="K39n9AuO4P9iXG7C3Mja-0">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="1000" as="sourcePoint" />
+            <mxPoint x="440" y="950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-4" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CSobCwgFTMA0VVr5u7jC-1" target="K39n9AuO4P9iXG7C3Mja-23">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="970" as="sourcePoint" />
+            <mxPoint x="440" y="920" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-5" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;Extends&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="380" y="800" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-6" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="K39n9AuO4P9iXG7C3Mja-13" target="K39n9AuO4P9iXG7C3Mja-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="520" as="sourcePoint" />
+            <mxPoint x="440" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-7" value="&lt;font style=&quot;font-size: 28px;&quot;&gt;Interface&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="1190" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CSobCwgFTMA0VVr5u7jC-7" target="CSobCwgFTMA0VVr5u7jC-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="1200" as="sourcePoint" />
+            <mxPoint x="160" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-9" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Hospital&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="1320" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="CSobCwgFTMA0VVr5u7jC-10" value="Constant declarations -&amp;nbsp;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Names of hospitals.&lt;/li&gt;&lt;li&gt;Which hospital is nearest to which hospital.&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="1370" width="240" height="150" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
