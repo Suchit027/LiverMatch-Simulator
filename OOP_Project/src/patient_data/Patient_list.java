@@ -8,55 +8,56 @@ public class Patient_list extends Patient {
 		super();
 		link = null;
 	}
+
 	protected Patient_list(String name, String hos, String pa) {
 		super(name, hos, pa);
 		link = null;
 	}
 
 // adding new patient to the list
-	public Patient_list add(Patient_list ob) {
+//	this function is always to be called from the header node
+//	header node will be created with the default constructor
+	public void add(Patient_list ob) {
 
-		Patient_list temp = this;
-		if (temp.link == null) {
-			if (temp.meld_score >= ob.meld_score) {	// first meld score is used to sort
-				if (temp.meld_score == ob.meld_score) {
-					if (temp.rank > ob.rank) {// then rank is used if meld score is same
-						ob.link = temp;
-						return ob;
-					} else {
-						temp.link = ob;
-						return temp;
-					}
+		Patient_list head = this; // header node of the list
+		// if list is empty
+		if (head.link == null) {
+			head.link = ob;
+			return;
+		}
+		Patient_list pre = head; // to denote the previous node in the list
+		for (Patient_list first = head.link; first != null; first = first.link, pre = pre.link) {
+			if (first.meld_score > ob.meld_score) {
+				continue;
+			} else if (first.meld_score < ob.meld_score) {
+				pre.link = ob;
+				ob.link = first;
+			} else {
+				if (ob.rank < first.rank) {
+					pre.link = ob;
+					ob.link = first;
+				} else {
+					ob.link = first.link;
+					first.link = ob;
 				}
-				temp.link = ob;
-				return temp;
 			}
-			ob.link = temp;
-			return ob;
 		}
-		while (temp.link != null && temp.link.meld_score > ob.meld_score) {
-			temp = temp.link;
-		}
-		ob.link = temp.link;
-		temp.link = ob;
-		return this;
 	}
 
 // removing a patient from the list if his blood type matches with the liver
 	public Patient_list pop(String liver_blood) {
-		if(this == null) {
-			resetCount();	// if list is empty; then setting no. of patients to zero
+		Patient_list head = this;
+		if (head.link == null) {
+			resetCount(); // if list is empty; then setting no. of patients to zero
 			return null;
 		}
-		Patient_list head = new Patient_list();
-		head.link = this;
-		while(head.link != null) {
-			if(head.link.blood_type == liver_blood) {
-				Patient_list ans = head.link;
-				head.link = head.link.link;
+		Patient_list pre = head;
+		for (Patient_list first = head.link; first != null; first = first.link, pre = pre.link) {
+			if (first.blood_type == liver_blood) {
+				Patient_list ans = first;
+				pre.link = first.link;
 				return ans;
 			}
-			head = head.link;
 		}
 		return null;
 	}

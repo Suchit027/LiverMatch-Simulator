@@ -1,6 +1,6 @@
 package patient_data;
 
-public class Patient extends MedicalData{
+public class Patient extends Medical_data{
 	protected String name, hospital; // name of patient and hospital name
 	protected double meld_score; // meld score to calculate liver transplant patient priority
 	static int patient_count = 0; // no. of patients in the list
@@ -31,7 +31,7 @@ public class Patient extends MedicalData{
 		rank = patient_count;
 	}
 	
-	protected resetCount() {
+	protected void resetCount() {
 		patient_count = 0;
 	}
 }
