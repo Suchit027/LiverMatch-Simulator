@@ -1,3 +1,4 @@
+package Hospitals;
 public interface Hospital
 {
     final String hospital1 = "A";
