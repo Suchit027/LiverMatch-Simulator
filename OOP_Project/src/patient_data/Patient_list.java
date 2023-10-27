@@ -9,7 +9,7 @@ public class Patient_list extends Patient {
 		link = null;
 	}
 
-	protected Patient_list(String name, String hos, String pa) {
+	public Patient_list(String name, String hos, String pa) {
 		super(name, hos, pa);
 		link = null;
 	}
@@ -60,5 +60,18 @@ public class Patient_list extends Patient {
 			}
 		}
 		return null;
+	}
+
+	public Patient_list peek(String liver_blood) {
+		Patient_list head = this;
+		if (head.link == null) {
+			return null;
+		} else {
+			return this;
+		}
+	}
+
+	public String getHospital() {
+		return hospital;
 	}
 }
