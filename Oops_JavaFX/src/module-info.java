@@ -11,4 +11,6 @@ module Oops_JavaFX {
 		requires javafx.swing;
 		requires javafx.swt;
 		requires javafx.web;
+		requires OOP_Project;
+		
 }
