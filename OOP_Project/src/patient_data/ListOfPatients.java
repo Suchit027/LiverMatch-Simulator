@@ -1,15 +1,15 @@
 package patient_data;
 
-public class Patient_list extends Patient {
-	Patient_list link; // link to next patient
+public class ListOfPatients extends Patient {
+	ListOfPatients link; // link to next patient
 
 // default constructor
-	public Patient_list() {
+	public ListOfPatients() {
 		super();
 		link = null;
 	}
 
-	public Patient_list(String name, String hos, String pa) {
+	public ListOfPatients(String name, String hos, String pa) {
 		super(name, hos, pa);
 		link = null;
 	}
@@ -17,21 +17,23 @@ public class Patient_list extends Patient {
 // adding new patient to the list
 //	this function is always to be called from the header node
 //	header node will be created with the default constructor
-	public void add(Patient_list ob) {
+	public void add(ListOfPatients ob) {
 
-		Patient_list head = this; // header node of the list
+		ListOfPatients head = this; // header node of the list
 		// if list is empty
 		if (head.link == null) {
 			head.link = ob;
+			ob.link = null;
 			return;
 		}
-		Patient_list pre = head; // to denote the previous node in the list
-		for (Patient_list first = head.link; first != null; first = first.link, pre = pre.link) {
+		ListOfPatients pre = head; // to denote the previous node in the list
+		for (ListOfPatients first = head.link; first != null; first = first.link, pre = pre.link) {
 			if (first.meld_score > ob.meld_score) {
 				continue;
 			} else if (first.meld_score < ob.meld_score) {
 				pre.link = ob;
 				ob.link = first;
+				break;
 			} else {
 				if (ob.rank < first.rank) {
 					pre.link = ob;
@@ -40,38 +42,43 @@ public class Patient_list extends Patient {
 					ob.link = first.link;
 					first.link = ob;
 				}
+				break;
 			}
 		}
 	}
 
 // removing a patient from the list if his blood type matches with the liver
-	public Patient_list pop(String liver_blood) {
-		Patient_list head = this;
+	public ListOfPatients pop(String liver_blood) {
+		ListOfPatients head = this;
 		if (head.link == null) {
 			resetCount(); // if list is empty; then setting no. of patients to zero
 			return null;
 		}
-		Patient_list pre = head;
-		for (Patient_list first = head.link; first != null; first = first.link, pre = pre.link) {
-			if (first.blood_type == liver_blood) {
-				Patient_list ans = first;
-				pre.link = first.link;
+		ListOfPatients first = head.link;
+		for (; first != null; first = first.link, head = head.link) {
+			if (first.blood_type.equals(liver_blood)) {
+				ListOfPatients ans = first;
+				head.link = first.link;
 				return ans;
 			}
 		}
 		return null;
 	}
 
-	public Patient_list peek(String liver_blood) {
-		Patient_list head = this;
-		if (head.link == null) {
-			return null;
+	public boolean peek() {
+		if (link == null) {
+			return true;
 		} else {
-			return this;
+			return false;
 		}
 	}
 
 	public String getHospital() {
 		return hospital;
+	}
+
+	public void setHospital(String hos) {
+		hospital = hos;
+		return;
 	}
 }

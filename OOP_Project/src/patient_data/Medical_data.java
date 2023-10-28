@@ -13,7 +13,7 @@ public class Medical_data {
 		this.blood_type = blood_type;
 	}
 
-	public static boolean compatibility(LiverClass liver, Patient patient) {
+	public static boolean compatibility(Liver liver, Patient patient) {
 		if (liver.blood_type == patient.blood_type) {
 			return true;
 		} else {
