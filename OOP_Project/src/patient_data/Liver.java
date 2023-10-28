@@ -1,15 +1,15 @@
 package patient_data;
 
-public class LiverClass extends Medical_data {
+public class Liver extends Medical_data {
 	protected String Hospital; // Hospital Name
 
-	public LiverClass() // Default Constructor
+	public Liver() // Default Constructor
 	{
 		super();
 		Hospital = "none";
 	}
 
-	public LiverClass(String B, String H) {
+	public Liver(String B, String H) {
 		super(B);
 		Hospital = H;
 	}
@@ -22,5 +22,10 @@ public class LiverClass extends Medical_data {
 	// Returning Hospital Name
 	public String getHospital() {
 		return Hospital;
+	}
+
+	public void setHospital(String hos) {
+		Hospital = hos;
+		return;
 	}
 }

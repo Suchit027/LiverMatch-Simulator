@@ -1,7 +1,7 @@
 package Hospitals;
 
-import patient_data.Patient_list;
+import patient_data.ListOfPatients;
 
 public interface Hospital {
-	public Patient_list nearby_hos(String hos);
+	public ListOfPatients nearby_hos(String hos);
 }

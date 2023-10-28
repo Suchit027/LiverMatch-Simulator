@@ -16,77 +16,79 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import patient_data.LiverClass;
-import patient_data.Patient_list;
+import patient_data.Liver;
+import patient_data.ListOfPatients;
 
 public class ui extends Application implements Hospital {
 
-	Patient_list p1, p2, p3, head_A, head_B, head_C, head_D;
-	LiverClass l1, l2, l3;
-	String res1;
-	String res2;
-	String res3;
+	ListOfPatients pat1, pat2, pat3, hosA_list, hosB_list, hosC_list, hosD_list;
+	Liver liver1, liver2, liver3;
+	String result1;
+	String result2;
+	String result3;
 
-	public void create_list(Patient_list p) {
+	public void create_list(ListOfPatients p) {
 		switch (p.getHospital()) {
 		case "A":
-			head_A.add(p);
+			hosA_list.add(p);
 			break;
 		case "B":
-			head_B.add(p);
+			hosB_list.add(p);
 			break;
 		case "C":
-			head_C.add(p);
+			hosC_list.add(p);
 			break;
 		case "D":
-			head_D.add(p);
+			hosD_list.add(p);
 			break;
 		}
 	}
 
-	public Patient_list nearby_hos(String hos) {
+	public ListOfPatients nearby_hos(String hos) {
 		switch (hos) {
 		case "A":
-			return head_B;
+			return hosB_list;
 		case "B":
-			return head_C;
+			return hosC_list;
 		case "C":
-			return head_D;
+			return hosD_list;
 		case "D":
-			return head_A;
+			return hosA_list;
 		}
 		return null;
 	}
 
-	public String driver(LiverClass ob) {
+	public String driver(Liver ob) {
 		var res = new String();
-		String ori_hos = "";
-		Patient_list temp = new Patient_list();
+		String ori_hos = ob.getHospital();
+		ListOfPatients temp = null;
 		switch (ob.getHospital()) {
 		case "A":
-			temp = head_A;
-			ori_hos = "A";
+			temp = hosA_list;
 			break;
 		case "B":
-			temp = head_B;
-			ori_hos = "B";
+			temp = hosB_list;
 			break;
 		case "C":
-			temp = head_C;
-			ori_hos = "C";
+			temp = hosC_list;
 			break;
 		case "D":
-			temp = head_D;
-			ori_hos = "D";
+			temp = hosD_list;
 			break;
 		}
 		for (int check = 0; check <= 3; ++check) {
-			if (temp.peek(ob.getBloodType()) == null) {
+			if (temp.peek() == true) {
 				temp = this.nearby_hos(ob.getHospital());
+				ob.setHospital(temp.getHospital());
 				continue;
 			} else {
-				temp = temp.pop(ob.getBloodType());
-				res = "Patient " + temp.getName() + " gets liver from hospital " + ori_hos;
+				ListOfPatients temp1 = temp.pop(ob.getBloodType());
+				if (temp1 == null) {
+					temp = this.nearby_hos(ob.getHospital());
+					ob.setHospital(temp.getHospital());
+					continue;
+				}
+				res = "Patient " + temp1.getName() + " gets liver from hospital " + ori_hos;
 				return res;
 			}
 		}
@@ -99,17 +101,22 @@ public class ui extends Application implements Hospital {
 		launch(args);
 	}
 
-	String name1, name2, name3, hos3, b3, hos1, hos2, b1, b2;
-	int c1, tb1, i1, c2, tb2, i2, c3, tb3, i3;
+	String name1, name2, name3, hos_pat3, blood_pat3, hos_pat1, hos_pat2, blood_pat1, blood_pat2, hos_liv1, hos_liv2,
+			hos_liv3, blood_liv1, blood_liv2, blood_liv3;
+	int creatinine1, t_bilirubin1, inr1, creatinine2, t_bilirubin2, inr2, creatinine3, t_bilirubin3, inr3;
 
 	public void start(Stage mystage) {
-		head_A = new Patient_list();
-		head_B = new Patient_list();
-		head_C = new Patient_list();
-		head_D = new Patient_list();
-		res1 = new String();
-		res2 = new String();
-		res3 = new String();
+		hosA_list = new ListOfPatients();
+		hosA_list.setHospital("A");
+		hosB_list = new ListOfPatients();
+		hosB_list.setHospital("B");
+		hosC_list = new ListOfPatients();
+		hosC_list.setHospital("C");
+		hosD_list = new ListOfPatients();
+		hosD_list.setHospital("D");
+		result1 = new String();
+		result2 = new String();
+		result3 = new String();
 		var rootnode = new GridPane();
 		rootnode.setMinSize(400, 400);
 		rootnode.setPadding(new Insets(10, 10, 10, 10));
@@ -119,329 +126,348 @@ public class ui extends Application implements Hospital {
 		var myscene = new Scene(rootnode, 600, 600);
 		rootnode.setAlignment(Pos.CENTER);
 		mystage.setScene(myscene);
-		ObservableList<String> p_blood = FXCollections.observableArrayList("AB+", "AB-", "B+", "B-", "O+", "O-", "A-",
-				"A+");
-		ObservableList<String> p_hos = FXCollections.observableArrayList("A", "B", "C", "D");
+		ObservableList<String> patient_blood = FXCollections.observableArrayList("AB+", "AB-", "B+", "B-", "O+", "O-",
+				"A-", "A+");
+		ObservableList<String> patient_hos = FXCollections.observableArrayList("A", "B", "C", "D");
 
-		var lab1 = new Label("S.No.");
-		var lab2 = new Label("Patient Name");
-		var lab3 = new Label("Hospital");
-		var lab4 = new Label("Blood Group");
-		var lab5 = new Label("Creatinine");
-		var lab6 = new Label("Total Bilirubin");
-		var lab7 = new Label("INR");
+		var lab_sno = new Label("S.No.");
+		var lab_pat1 = new Label("1");
+		var lab_pat2 = new Label("2");
+		var lab_pat3 = new Label("3");
+		var lab_liv1 = new Label("1");
+		var lab_liv2 = new Label("2");
+		var lab_liv3 = new Label("3");
+		var lab_patientName = new Label("Patient Name");
+		var lab_patientHos = new Label("Hospital");
+		var lab_patientBlood = new Label("Blood Group");
+		var lab_creatinine = new Label("Creatinine");
+		var lab_totalBilirubin = new Label("Total Bilirubin");
+		var lab_inr = new Label("INR");
 
-		var tx1_1 = new TextField();
-		tx1_1.setPrefColumnCount(15);
-		tx1_1.setText("1");
-		name1 = tx1_1.getText();
-		tx1_1.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat1_name = new TextField();
+		tx_pat1_name.setPrefColumnCount(15);
+		tx_pat1_name.setText("1");
+		name1 = tx_pat1_name.getText();
+		tx_pat1_name.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				name1 = tx1_1.getText();
+				name1 = tx_pat1_name.getText();
 			}
 		});
 
-		var cb1_1 = new ComboBox<String>(p_hos);
-		cb1_1.setValue("A");
-		hos1 = cb1_1.getValue();
-		cb1_1.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_pat1_hos = new ComboBox<String>(patient_hos);
+		cb_pat1_hos.setValue("A");
+		hos_pat1 = cb_pat1_hos.getValue();
+		cb_pat1_hos.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				hos1 = cb1_1.getValue();
+				hos_pat1 = cb_pat1_hos.getValue();
 			}
 		});
 
-		var cb1_2 = new ComboBox<String>(p_blood);
-		cb1_2.setValue("A");
-		b1 = cb1_2.getValue();
-		cb1_2.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_pat1_blood = new ComboBox<String>(patient_blood);
+		cb_pat1_blood.setValue("AB+");
+		blood_pat1 = cb_pat1_blood.getValue();
+		cb_pat1_blood.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				b1 = cb1_2.getValue();
+				blood_pat1 = cb_pat1_blood.getValue();
 			}
 		});
 
-		var tx1_2 = new TextField();
-		tx1_2.setPrefColumnCount(5);
-		tx1_2.setText("1");
-		c1 = 1;
-		tx1_2.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat1_creatinine = new TextField();
+		tx_pat1_creatinine.setPrefColumnCount(5);
+		tx_pat1_creatinine.setText("1");
+		creatinine1 = 1;
+		tx_pat1_creatinine.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				c1 = Integer.parseInt(tx1_2.getText());
+				creatinine1 = Integer.parseInt(tx_pat1_creatinine.getText());
 			}
 		});
 
-		var tx1_3 = new TextField();
-		tx1_3.setPrefColumnCount(5);
-		tx1_3.setText("1");
-		tb1 = 1;
-		tx1_3.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat1_totalBilirubin = new TextField();
+		tx_pat1_totalBilirubin.setPrefColumnCount(5);
+		tx_pat1_totalBilirubin.setText("1");
+		t_bilirubin1 = 1;
+		tx_pat1_totalBilirubin.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				tb1 = Integer.parseInt(tx1_3.getText());
+				t_bilirubin1 = Integer.parseInt(tx_pat1_totalBilirubin.getText());
 			}
 		});
 
-		var tx1_4 = new TextField();
-		tx1_4.setPrefColumnCount(5);
-		tx1_4.setText("1");
-		i1 = 1;
-		tx1_4.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat1_inr = new TextField();
+		tx_pat1_inr.setPrefColumnCount(5);
+		tx_pat1_inr.setText("1");
+		inr1 = 1;
+		tx_pat1_inr.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				i1 = Integer.parseInt(tx1_4.getText());
+				inr1 = Integer.parseInt(tx_pat1_inr.getText());
 			}
 		});
 
-		var tx2_1 = new TextField();
-		tx2_1.setPrefColumnCount(15);
-		tx2_1.setText("2");
-		name2 = tx2_1.getText();
-		tx2_1.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat2_name = new TextField();
+		tx_pat2_name.setPrefColumnCount(15);
+		tx_pat2_name.setText("2");
+		name2 = tx_pat2_name.getText();
+		tx_pat2_name.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				name2 = tx2_1.getText();
+				name2 = tx_pat2_name.getText();
 			}
 		});
 
-		var cb2_1 = new ComboBox<String>(p_hos);
-		cb2_1.setValue("A");
-		hos2 = cb2_1.getValue();
-		cb2_1.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_pat2_hos = new ComboBox<String>(patient_hos);
+		cb_pat2_hos.setValue("A");
+		hos_pat2 = cb_pat2_hos.getValue();
+		cb_pat2_hos.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				hos2 = cb2_1.getValue();
+				hos_pat2 = cb_pat2_hos.getValue();
 			}
 		});
 
-		var cb2_2 = new ComboBox<String>(p_blood);
-		cb2_2.setValue("A");
-		b2 = cb2_2.getValue();
-		cb2_2.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_pat2_blood = new ComboBox<String>(patient_blood);
+		cb_pat2_blood.setValue("AB+");
+		blood_pat2 = cb_pat2_blood.getValue();
+		cb_pat2_blood.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				b2 = cb2_2.getValue();
+				blood_pat2 = cb_pat2_blood.getValue();
 			}
 		});
 
-		var tx2_2 = new TextField();
-		tx2_2.setPrefColumnCount(5);
-		tx2_2.setText("2");
-		c2 = 2;
-		tx2_2.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat2_creatinine = new TextField();
+		tx_pat2_creatinine.setPrefColumnCount(5);
+		tx_pat2_creatinine.setText("2");
+		creatinine2 = 2;
+		tx_pat2_creatinine.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				c2 = Integer.parseInt(tx2_2.getText());
+				creatinine2 = Integer.parseInt(tx_pat2_creatinine.getText());
 			}
 		});
 
-		var tx2_3 = new TextField();
-		tx2_3.setPrefColumnCount(5);
-		tx2_3.setText("2");
-		tb2 = 1;
-		tx2_3.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat2_totalbilirubin = new TextField();
+		tx_pat2_totalbilirubin.setPrefColumnCount(5);
+		tx_pat2_totalbilirubin.setText("2");
+		t_bilirubin2 = 1;
+		tx_pat2_totalbilirubin.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				tb2 = Integer.parseInt(tx2_3.getText());
+				t_bilirubin2 = Integer.parseInt(tx_pat2_totalbilirubin.getText());
 			}
 		});
 
-		var tx2_4 = new TextField();
-		tx2_4.setPrefColumnCount(5);
-		tx2_4.setText("2");
-		i2 = 2;
-		tx2_4.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat2_inr = new TextField();
+		tx_pat2_inr.setPrefColumnCount(5);
+		tx_pat2_inr.setText("2");
+		inr2 = 2;
+		tx_pat2_inr.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				i2 = Integer.parseInt(tx2_4.getText());
+				inr2 = Integer.parseInt(tx_pat2_inr.getText());
 			}
 		});
 
-		var tx3_1 = new TextField();
-		tx3_1.setPrefColumnCount(15);
-		tx3_1.setText("3");
-		name3 = tx3_1.getText();
-		tx3_1.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat3_name = new TextField();
+		tx_pat3_name.setPrefColumnCount(15);
+		tx_pat3_name.setText("3");
+		name3 = tx_pat3_name.getText();
+		tx_pat3_name.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				name3 = tx3_1.getText();
+				name3 = tx_pat3_name.getText();
 			}
 		});
 
-		var cb3_1 = new ComboBox<String>(p_hos);
-		cb3_1.setValue("A");
-		hos3 = cb3_1.getValue();
-		cb3_1.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_pat3_hos = new ComboBox<String>(patient_hos);
+		cb_pat3_hos.setValue("A");
+		hos_pat3 = cb_pat3_hos.getValue();
+		cb_pat3_hos.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				hos3 = cb3_1.getValue();
+				hos_pat3 = cb_pat3_hos.getValue();
 			}
 		});
 
-		var cb3_2 = new ComboBox<String>(p_blood);
-		cb3_2.setValue("A");
-		b3 = cb3_2.getValue();
-		cb3_2.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_pat3_blood = new ComboBox<String>(patient_blood);
+		cb_pat3_blood.setValue("AB+");
+		blood_pat3 = cb_pat3_blood.getValue();
+		cb_pat3_blood.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				b3 = cb3_2.getValue();
+				blood_pat3 = cb_pat3_blood.getValue();
 			}
 		});
 
-		var tx3_2 = new TextField();
-		tx3_2.setPrefColumnCount(5);
-		tx3_2.setText("3");
-		c3 = 3;
-		tx3_2.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat3_creatinine = new TextField();
+		tx_pat3_creatinine.setPrefColumnCount(5);
+		tx_pat3_creatinine.setText("3");
+		creatinine3 = 3;
+		tx_pat3_creatinine.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				c3 = Integer.parseInt(tx3_2.getText());
+				creatinine3 = Integer.parseInt(tx_pat3_creatinine.getText());
 			}
 		});
 
-		var tx3_3 = new TextField();
-		tx3_3.setPrefColumnCount(5);
-		tx3_3.setText("3");
-		tb3 = 3;
-		tx3_3.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat3_totalbilirubin = new TextField();
+		tx_pat3_totalbilirubin.setPrefColumnCount(5);
+		tx_pat3_totalbilirubin.setText("3");
+		t_bilirubin3 = 3;
+		tx_pat3_totalbilirubin.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				tb3 = Integer.parseInt(tx3_3.getText());
+				t_bilirubin3 = Integer.parseInt(tx_pat3_totalbilirubin.getText());
 			}
 		});
 
-		var tx3_4 = new TextField();
-		tx3_4.setPrefColumnCount(5);
-		tx3_4.setText("3");
-		i3 = 3;
-		tx3_4.setOnAction(new EventHandler<ActionEvent>() {
+		var tx_pat3_inr = new TextField();
+		tx_pat3_inr.setPrefColumnCount(5);
+		tx_pat3_inr.setText("3");
+		inr3 = 3;
+		tx_pat3_inr.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				i3 = Integer.parseInt(tx3_4.getText());
+				inr3 = Integer.parseInt(tx_pat3_inr.getText());
 			}
 		});
 
-		var lab8 = new Label("S.No.");
-		var lab9 = new Label("Blood Type");
-		var lab10 = new Label("Hospital");
+		var lab_liver_sno = new Label("S.No.");
+		var lab_liver_blood = new Label("Liver Blood Type");
+		var lab_liver_hos = new Label("Liver Hospital");
 
-		var cbl1_1 = new ComboBox<String>(p_blood);
-		cbl1_1.setValue("A");
-		b1 = cbl1_1.getValue();
-		cbl1_1.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_liv1_blood = new ComboBox<String>(patient_blood);
+		cb_liv1_blood.setValue("AB+");
+		blood_liv1 = cb_liv1_blood.getValue();
+		cb_liv1_blood.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				b1 = cbl1_1.getValue();
+				blood_liv1 = cb_liv1_blood.getValue();
 			}
 		});
 
-		var cbl1_2 = new ComboBox<String>(p_hos);
-		cbl1_2.setValue("A");
-		hos1 = cbl1_2.getValue();
-		cbl1_2.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_liv1_hos = new ComboBox<String>(patient_hos);
+		cb_liv1_hos.setValue("A");
+		hos_liv1 = cb_liv1_hos.getValue();
+		cb_liv1_hos.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				hos1 = cbl1_2.getValue();
+				hos_liv1 = cb_liv1_hos.getValue();
 			}
 		});
 
-		var cbl2_1 = new ComboBox<String>(p_blood);
-		cbl2_1.setValue("A");
-		b2 = cbl2_1.getValue();
-		cbl2_1.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_liv2_blood = new ComboBox<String>(patient_blood);
+		cb_liv2_blood.setValue("AB+");
+		blood_liv2 = cb_liv2_blood.getValue();
+		cb_liv2_blood.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				b2 = cbl2_1.getValue();
+				blood_liv2 = cb_liv2_blood.getValue();
 			}
 		});
 
-		var cbl2_2 = new ComboBox<String>(p_hos);
-		cbl2_2.setValue("A");
-		hos2 = cbl2_2.getValue();
-		cbl2_2.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_liv2_hos = new ComboBox<String>(patient_hos);
+		cb_liv2_hos.setValue("A");
+		hos_liv2 = cb_liv2_hos.getValue();
+		cb_liv2_hos.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				hos2 = cbl2_2.getValue();
+				hos_liv2 = cb_liv2_hos.getValue();
 			}
 		});
 
-		var cbl3_1 = new ComboBox<String>(p_blood);
-		cbl3_1.setValue("A");
-		b3 = cbl3_1.getValue();
-		cbl3_1.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_liv3_blood = new ComboBox<String>(patient_blood);
+		cb_liv3_blood.setValue("AB+");
+		blood_liv3 = cb_liv3_blood.getValue();
+		cb_liv3_blood.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				b3 = cbl3_1.getValue();
+				blood_liv3 = cb_liv3_blood.getValue();
 			}
 		});
 
-		var cbl3_2 = new ComboBox<String>(p_hos);
-		cbl3_2.setValue("A");
-		hos3 = cbl3_2.getValue();
-		cbl3_2.setOnAction(new EventHandler<ActionEvent>() {
+		var cb_liv3_hos = new ComboBox<String>(patient_hos);
+		cb_liv3_hos.setValue("A");
+		hos_liv3 = cb_liv3_hos.getValue();
+		cb_liv3_hos.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				hos3 = cbl3_2.getValue();
+				hos_liv3 = cb_liv3_hos.getValue();
 			}
 		});
 
-		var but = new Button("Calculate");
+		var but_cal = new Button("Compute");
 		var ob = this;
-		but.setOnAction(new EventHandler<ActionEvent>() {
+		but_cal.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent ae) {
-				p1 = new Patient_list(name1, hos1, b1);
-				p1.setScore(c1, tb1, i1);
-				ob.create_list(p1);
-				p2 = new Patient_list(name2, hos2, b2);
-				p2.setScore(c2, tb2, i2);
-				ob.create_list(p2);
-				p3 = new Patient_list(name3, hos3, b3);
-				p3.setScore(c3, tb3, i3);
-				ob.create_list(p3);
-				l1 = new LiverClass(b1, hos1);
-				l2 = new LiverClass(b2, hos2);
-				l3 = new LiverClass(b3, hos3);
-				res1 = ob.driver(l1);
-				res2 = ob.driver(l2);
-				res3 = ob.driver(l3);
+				pat1 = new ListOfPatients(name1, hos_pat1, blood_pat1);
+				pat1.setScore(creatinine1, t_bilirubin1, inr1);
+				ob.create_list(pat1);
+				pat2 = new ListOfPatients(name2, hos_pat2, blood_pat2);
+				pat2.setScore(creatinine2, t_bilirubin2, inr2);
+				ob.create_list(pat2);
+				pat3 = new ListOfPatients(name3, hos_pat3, blood_pat3);
+				pat3.setScore(creatinine3, t_bilirubin3, inr3);
+				ob.create_list(pat3);
+				liver1 = new Liver(blood_liv1, hos_liv1);
+				liver2 = new Liver(blood_liv2, hos_liv2);
+				liver3 = new Liver(blood_liv3, hos_liv3);
+				result1 = ob.driver(liver1);
+				result2 = ob.driver(liver2);
+				result3 = ob.driver(liver3);
 			}
 		});
 
-		lab1.setAlignment(Pos.CENTER);
-		lab2.setAlignment(Pos.CENTER);
-		lab3.setAlignment(Pos.CENTER);
-		lab4.setAlignment(Pos.CENTER);
-		lab5.setAlignment(Pos.CENTER);
-		lab6.setAlignment(Pos.CENTER);
-		lab7.setAlignment(Pos.CENTER);
-		lab8.setAlignment(Pos.CENTER);
-		lab9.setAlignment(Pos.CENTER);
-		lab10.setAlignment(Pos.CENTER);
+		lab_sno.setAlignment(Pos.CENTER);
+		lab_patientName.setAlignment(Pos.CENTER);
+		lab_patientHos.setAlignment(Pos.CENTER);
+		lab_patientBlood.setAlignment(Pos.CENTER);
+		lab_creatinine.setAlignment(Pos.CENTER);
+		lab_totalBilirubin.setAlignment(Pos.CENTER);
+		lab_inr.setAlignment(Pos.CENTER);
+		lab_liver_sno.setAlignment(Pos.CENTER);
+		lab_liver_blood.setAlignment(Pos.CENTER);
+		lab_liver_hos.setAlignment(Pos.CENTER);
 
-		rootnode.add(lab1, 0, 0);
-		rootnode.add(lab2, 1, 0);
-		rootnode.add(lab3, 2, 0);
-		rootnode.add(lab4, 3, 0);
-		rootnode.add(lab5, 4, 0);
-		rootnode.add(lab6, 5, 0);
-		rootnode.add(lab7, 6, 0);
-		rootnode.add(tx1_1, 1, 1);
-		rootnode.add(tx1_2, 4, 1);
-		rootnode.add(tx1_3, 5, 1);
-		rootnode.add(tx1_4, 6, 1);
-		rootnode.add(cb1_1, 2, 1);
-		rootnode.add(cb1_2, 3, 1);
-		rootnode.add(tx2_1, 1, 2);
-		rootnode.add(tx2_2, 4, 2);
-		rootnode.add(tx2_3, 5, 2);
-		rootnode.add(tx2_4, 6, 2);
-		rootnode.add(cb2_1, 2, 2);
-		rootnode.add(cb2_2, 3, 2);
-		rootnode.add(tx3_1, 1, 3);
-		rootnode.add(tx3_2, 4, 3);
-		rootnode.add(tx3_3, 5, 3);
-		rootnode.add(tx3_4, 6, 3);
-		rootnode.add(cb3_1, 2, 3);
-		rootnode.add(cb3_2, 3, 3);
-		rootnode.add(lab8, 0, 4);
-		rootnode.add(lab9, 1, 4);
-		rootnode.add(lab10, 2, 4);
-		rootnode.add(cbl1_1, 1, 5);
-		rootnode.add(cbl1_2, 2, 5);
-		rootnode.add(cbl2_1, 1, 6);
-		rootnode.add(cbl2_2, 2, 6);
-		rootnode.add(cbl3_1, 1, 7);
-		rootnode.add(cbl3_2, 2, 7);
-		rootnode.add(but, 0, 8);
+		var lab_res1 = new Label();
+		lab_res1.setText(result1);
+		var lab_res2 = new Label(result2);
+		lab_res2.setText(result2);
+		var lab_res3 = new Label(result3);
+		lab_res3.setText(result3);
+
+		rootnode.add(lab_sno, 0, 0);
+		rootnode.add(lab_pat1, 0, 1);
+		rootnode.add(lab_pat2, 0, 2);
+		rootnode.add(lab_pat3, 0, 3);
+		rootnode.add(lab_patientName, 1, 0);
+		rootnode.add(lab_patientHos, 2, 0);
+		rootnode.add(lab_patientBlood, 3, 0);
+		rootnode.add(lab_creatinine, 4, 0);
+		rootnode.add(lab_totalBilirubin, 5, 0);
+		rootnode.add(lab_inr, 6, 0);
+		rootnode.add(tx_pat1_name, 1, 1);
+		rootnode.add(tx_pat1_creatinine, 4, 1);
+		rootnode.add(tx_pat1_totalBilirubin, 5, 1);
+		rootnode.add(tx_pat1_inr, 6, 1);
+		rootnode.add(cb_pat1_hos, 2, 1);
+		rootnode.add(cb_pat1_blood, 3, 1);
+		rootnode.add(tx_pat2_name, 1, 2);
+		rootnode.add(tx_pat2_creatinine, 4, 2);
+		rootnode.add(tx_pat2_totalbilirubin, 5, 2);
+		rootnode.add(tx_pat2_inr, 6, 2);
+		rootnode.add(cb_pat2_hos, 2, 2);
+		rootnode.add(cb_pat2_blood, 3, 2);
+		rootnode.add(tx_pat3_name, 1, 3);
+		rootnode.add(tx_pat3_creatinine, 4, 3);
+		rootnode.add(tx_pat3_totalbilirubin, 5, 3);
+		rootnode.add(tx_pat3_inr, 6, 3);
+		rootnode.add(cb_pat3_hos, 2, 3);
+		rootnode.add(cb_pat3_blood, 3, 3);
+		rootnode.add(lab_liver_sno, 0, 4);
+		rootnode.add(lab_liv1, 0, 5);
+		rootnode.add(lab_liv2, 0, 6);
+		rootnode.add(lab_liv3, 0, 7);
+		rootnode.add(lab_liver_blood, 1, 4);
+		rootnode.add(lab_liver_hos, 2, 4);
+		rootnode.add(cb_liv1_blood, 1, 5);
+		rootnode.add(cb_liv1_hos, 2, 5);
+		rootnode.add(cb_liv2_blood, 1, 6);
+		rootnode.add(cb_liv2_hos, 2, 6);
+		rootnode.add(cb_liv3_blood, 1, 7);
+		rootnode.add(cb_liv3_hos, 2, 7);
+		rootnode.add(but_cal, 0, 8);
+//		rootnode.add(lab_res1, 0, 9);
+//		rootnode.add(lab_res2, 0, 10);
+//		rootnode.add(lab_res3, 0, 11);
 
 		mystage.show();
 	}
 
-	/**
-	 *
-	 */
 	public void stop() {
 
-		System.out.println(res1);
-		System.out.println(res2);
-		System.out.println(res3);
+		System.out.println(result1);
+		System.out.println(result2);
+		System.out.println(result3);
 	}
 }
