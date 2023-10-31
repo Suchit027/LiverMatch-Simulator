@@ -120,8 +120,8 @@ public class ui extends Application implements Hospital {
 		var rootnode = new GridPane();
 		rootnode.setMinSize(400, 400);
 		rootnode.setPadding(new Insets(10, 10, 10, 10));
-		rootnode.setVgap(5);
-		rootnode.setHgap(5);
+		rootnode.setVgap(10);
+		rootnode.setHgap(10);
 		rootnode.setAlignment(Pos.CENTER);
 		var myscene = new Scene(rootnode, 600, 600);
 		rootnode.setAlignment(Pos.CENTER);
@@ -130,7 +130,6 @@ public class ui extends Application implements Hospital {
 				"A-", "A+");
 		ObservableList<String> patient_hos = FXCollections.observableArrayList("A", "B", "C", "D");
 
-		var lab_sno = new Label("S.No.");
 		var lab_pat1 = new Label("1");
 		var lab_pat2 = new Label("2");
 		var lab_pat3 = new Label("3");
@@ -318,7 +317,6 @@ public class ui extends Application implements Hospital {
 			}
 		});
 
-		var lab_liver_sno = new Label("S.No.");
 		var lab_liver_blood = new Label("Liver Blood Type");
 		var lab_liver_hos = new Label("Liver Hospital");
 
@@ -398,14 +396,12 @@ public class ui extends Application implements Hospital {
 			}
 		});
 
-		lab_sno.setAlignment(Pos.CENTER);
 		lab_patientName.setAlignment(Pos.CENTER);
 		lab_patientHos.setAlignment(Pos.CENTER);
 		lab_patientBlood.setAlignment(Pos.CENTER);
 		lab_creatinine.setAlignment(Pos.CENTER);
 		lab_totalBilirubin.setAlignment(Pos.CENTER);
 		lab_inr.setAlignment(Pos.CENTER);
-		lab_liver_sno.setAlignment(Pos.CENTER);
 		lab_liver_blood.setAlignment(Pos.CENTER);
 		lab_liver_hos.setAlignment(Pos.CENTER);
 
@@ -415,8 +411,10 @@ public class ui extends Application implements Hospital {
 		lab_res2.setText(result2);
 		var lab_res3 = new Label(result3);
 		lab_res3.setText(result3);
+		var lab_pat = new Label("For Patients -");
+		var lab_liv = new Label("For Liver -");
 
-		rootnode.add(lab_sno, 0, 0);
+		rootnode.add(lab_pat, 0, 0);
 		rootnode.add(lab_pat1, 0, 1);
 		rootnode.add(lab_pat2, 0, 2);
 		rootnode.add(lab_pat3, 0, 3);
@@ -444,7 +442,7 @@ public class ui extends Application implements Hospital {
 		rootnode.add(tx_pat3_inr, 6, 3);
 		rootnode.add(cb_pat3_hos, 2, 3);
 		rootnode.add(cb_pat3_blood, 3, 3);
-		rootnode.add(lab_liver_sno, 0, 4);
+		rootnode.add(lab_liv, 0, 4);
 		rootnode.add(lab_liv1, 0, 5);
 		rootnode.add(lab_liv2, 0, 6);
 		rootnode.add(lab_liv3, 0, 7);
