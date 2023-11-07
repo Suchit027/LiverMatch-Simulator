@@ -17,7 +17,7 @@ public class ListOfPatients extends Patient {
 // adding new patient to the list
 //	this function is always to be called from the header node
 //	header node will be created with the default constructor
-	public void add(ListOfPatients ob) {
+	synchronized public void add(ListOfPatients ob) {
 
 		ListOfPatients head = this; // header node of the list
 		// if list is empty
@@ -48,7 +48,7 @@ public class ListOfPatients extends Patient {
 	}
 
 // removing a patient from the list if his blood type matches with the liver
-	public ListOfPatients pop(String liver_blood) {
+	synchronized public ListOfPatients pop(String liver_blood) {
 		ListOfPatients head = this;
 		if (head.link == null) {
 			resetCount(); // if list is empty; then setting no. of patients to zero

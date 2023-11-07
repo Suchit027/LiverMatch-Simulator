@@ -13,11 +13,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import patient_data.Liver;
 import patient_data.ListOfPatients;
+import javafx.scene.canvas.*;
+import javafx.scene.web.*;
+import javafx.scene.image.*;
+import java.io.*;
+import java.net.URL;
+
+import javafx.geometry.*;
+import javafx.scene.Group;
 
 public class ui extends Application implements Hospital {
 
@@ -105,7 +119,7 @@ public class ui extends Application implements Hospital {
 			hos_liv3, blood_liv1, blood_liv2, blood_liv3;
 	int creatinine1, t_bilirubin1, inr1, creatinine2, t_bilirubin2, inr2, creatinine3, t_bilirubin3, inr3;
 
-	public void start(Stage mystage) {
+	public void start(Stage mystage) throws IOException {
 		hosA_list = new ListOfPatients();
 		hosA_list.setHospital("A");
 		hosB_list = new ListOfPatients();
@@ -118,19 +132,27 @@ public class ui extends Application implements Hospital {
 		result2 = new String();
 		result3 = new String();
 		var rootnode = new GridPane();
-		rootnode.setMinSize(400, 400);
+		rootnode.setMinSize(800, 400);
 		rootnode.setPadding(new Insets(10, 10, 10, 10));
-		rootnode.setVgap(5);
-		rootnode.setHgap(5);
+		rootnode.setVgap(10);
+		rootnode.setHgap(10);
 		rootnode.setAlignment(Pos.CENTER);
-		var myscene = new Scene(rootnode, 600, 600);
+		var myscene = new Scene(rootnode, 1280, 725);
+		mystage.setTitle("Liver Transplant and Harvesting Simulation");
+		URL path = ui.class.getResource("background.jpg");
+		FileInputStream input = new FileInputStream(new File(path.getFile()));
+		Image image = new Image(input);
+		BackgroundImage backgroundimage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		Background background = new Background(backgroundimage);
+		rootnode.setBackground(background);
+
 		rootnode.setAlignment(Pos.CENTER);
 		mystage.setScene(myscene);
 		ObservableList<String> patient_blood = FXCollections.observableArrayList("AB+", "AB-", "B+", "B-", "O+", "O-",
 				"A-", "A+");
 		ObservableList<String> patient_hos = FXCollections.observableArrayList("A", "B", "C", "D");
 
-		var lab_sno = new Label("S.No.");
 		var lab_pat1 = new Label("1");
 		var lab_pat2 = new Label("2");
 		var lab_pat3 = new Label("3");
@@ -318,7 +340,6 @@ public class ui extends Application implements Hospital {
 			}
 		});
 
-		var lab_liver_sno = new Label("S.No.");
 		var lab_liver_blood = new Label("Liver Blood Type");
 		var lab_liver_hos = new Label("Liver Hospital");
 
@@ -376,6 +397,13 @@ public class ui extends Application implements Hospital {
 			}
 		});
 
+		var lab_res1 = new Label();
+		lab_res1.setText("Output 1");
+		var lab_res2 = new Label(result2);
+		lab_res2.setText("Output 2");
+		var lab_res3 = new Label(result3);
+		lab_res3.setText("Output 3");
+
 		var but_cal = new Button("Compute");
 		var ob = this;
 		but_cal.setOnAction(new EventHandler<ActionEvent>() {
@@ -393,30 +421,27 @@ public class ui extends Application implements Hospital {
 				liver2 = new Liver(blood_liv2, hos_liv2);
 				liver3 = new Liver(blood_liv3, hos_liv3);
 				result1 = ob.driver(liver1);
+				lab_res1.setText(result1);
 				result2 = ob.driver(liver2);
+				lab_res2.setText(result2);
 				result3 = ob.driver(liver3);
+				lab_res3.setText(result3);
 			}
 		});
 
-		lab_sno.setAlignment(Pos.CENTER);
 		lab_patientName.setAlignment(Pos.CENTER);
 		lab_patientHos.setAlignment(Pos.CENTER);
 		lab_patientBlood.setAlignment(Pos.CENTER);
 		lab_creatinine.setAlignment(Pos.CENTER);
 		lab_totalBilirubin.setAlignment(Pos.CENTER);
 		lab_inr.setAlignment(Pos.CENTER);
-		lab_liver_sno.setAlignment(Pos.CENTER);
 		lab_liver_blood.setAlignment(Pos.CENTER);
 		lab_liver_hos.setAlignment(Pos.CENTER);
 
-		var lab_res1 = new Label();
-		lab_res1.setText(result1);
-		var lab_res2 = new Label(result2);
-		lab_res2.setText(result2);
-		var lab_res3 = new Label(result3);
-		lab_res3.setText(result3);
+		var lab_pat = new Label("For Patients -");
+		var lab_liv = new Label("For Liver -");
 
-		rootnode.add(lab_sno, 0, 0);
+		rootnode.add(lab_pat, 0, 0);
 		rootnode.add(lab_pat1, 0, 1);
 		rootnode.add(lab_pat2, 0, 2);
 		rootnode.add(lab_pat3, 0, 3);
@@ -444,7 +469,7 @@ public class ui extends Application implements Hospital {
 		rootnode.add(tx_pat3_inr, 6, 3);
 		rootnode.add(cb_pat3_hos, 2, 3);
 		rootnode.add(cb_pat3_blood, 3, 3);
-		rootnode.add(lab_liver_sno, 0, 4);
+		rootnode.add(lab_liv, 0, 4);
 		rootnode.add(lab_liv1, 0, 5);
 		rootnode.add(lab_liv2, 0, 6);
 		rootnode.add(lab_liv3, 0, 7);
@@ -457,17 +482,10 @@ public class ui extends Application implements Hospital {
 		rootnode.add(cb_liv3_blood, 1, 7);
 		rootnode.add(cb_liv3_hos, 2, 7);
 		rootnode.add(but_cal, 0, 8);
-//		rootnode.add(lab_res1, 0, 9);
-//		rootnode.add(lab_res2, 0, 10);
-//		rootnode.add(lab_res3, 0, 11);
+		rootnode.add(lab_res1, 0, 9, 3, 1);
+		rootnode.add(lab_res2, 0, 10, 3, 1);
+		rootnode.add(lab_res3, 0, 11, 3, 1);
 
 		mystage.show();
-	}
-
-	public void stop() {
-
-		System.out.println(result1);
-		System.out.println(result2);
-		System.out.println(result3);
 	}
 }
