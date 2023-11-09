@@ -138,7 +138,7 @@ public class ui extends Application implements Hospital {
 		rootnode.setHgap(10);
 		rootnode.setAlignment(Pos.CENTER);
 		var myscene = new Scene(rootnode, 1280, 725);
-		mystage.setTitle("Liver Transplant and Harvesting Simulation");
+		mystage.setTitle("Liver Match: Streamlined Allocation for Hospitals");
 		URL path = ui.class.getResource("background.jpg");
 		FileInputStream input = new FileInputStream(new File(path.getFile()));
 		Image image = new Image(input);
